@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Products\Commands\Delete\" />
+    <Folder Include="Features\Products\Commands\Update\" />
+    <Folder Include="Features\Products\Constants\" />
+    <Folder Include="Features\Products\Rules\" />
+    <Folder Include="Features\Products\Profiles\" />
+    <Folder Include="Features\Products\Quaries\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
+  </ItemGroup>
+
+</Project>

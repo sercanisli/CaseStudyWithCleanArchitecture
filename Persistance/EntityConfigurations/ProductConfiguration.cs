@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.EntityConfigurations
+namespace Persistence.EntityConfigurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Products").HasKey(p=>p.Id);
+            builder.ToTable("Products").HasKey(p => p.Id);
 
             builder.Property(p => p.Id).HasColumnName("Id").IsRequired();
             builder.Property(p => p.Title).HasColumnName("Title").IsRequired();
@@ -18,6 +18,10 @@ namespace Persistance.EntityConfigurations
             builder.Property(p => p.DeletedDate).HasColumnName("DeletedDate");
 
             builder.HasOne(p => p.Category);
+
+            //Global Query Filter
+            //ilgili product için bir deleted değeri yoksa;
+            builder.HasQueryFilter(p => !p.DeletedDate.HasValue);
         }
     }
 }

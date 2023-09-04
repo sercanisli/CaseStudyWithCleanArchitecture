@@ -11,6 +11,7 @@ namespace Persistence.EntityConfigurations
             builder.ToTable("Products").HasKey(p => p.Id);
 
             builder.Property(p => p.Id).HasColumnName("Id").IsRequired();
+            builder.Property(p=>p.CategoryId).HasColumnName("CategoryId").IsRequired();
             builder.Property(p => p.Title).HasColumnName("Title").IsRequired();
             builder.Property(p => p.Description).HasColumnName("Description").IsRequired();
             builder.Property(p => p.CreatedDate).HasColumnName("CreatedDate").IsRequired();

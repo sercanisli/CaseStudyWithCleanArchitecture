@@ -16,7 +16,6 @@ namespace Application.Services.Repositories
             CancellationToken cancellationToken = default
             );
 
-
         Task<Paginate<TEntity>> GetListAsync(
            Expression<Func<TEntity, bool>>? predicate = null,
            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
@@ -27,6 +26,7 @@ namespace Application.Services.Repositories
            bool enableTracking = true,
            CancellationToken cancellationToken = default
            );
+
         Task<Paginate<TEntity>> GetListByDynamicAsync(
            DynamicQuery dynamic,
            Expression<Func<TEntity, bool>>? predicate = null,

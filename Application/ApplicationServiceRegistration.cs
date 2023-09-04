@@ -12,6 +12,7 @@ namespace Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(configuration =>
             {
                 //Controller üzerinden Send edilen nesneye ait Command, Handler, Response ' u otomatik olarak bulması için.

@@ -12,7 +12,7 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20230904163738_InitialCreate")]
+    [Migration("20230906001505_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -43,7 +43,11 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
-                        .HasColumnName("Title");
+                        .HasColumnName("Name");
+
+                    b.Property<int>("StockLimit")
+                        .HasColumnType("int")
+                        .HasColumnName("StockLimit");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2")

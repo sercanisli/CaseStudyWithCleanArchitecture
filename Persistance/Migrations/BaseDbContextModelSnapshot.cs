@@ -40,7 +40,11 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
-                        .HasColumnName("Title");
+                        .HasColumnName("Name");
+
+                    b.Property<int>("StockLimit")
+                        .HasColumnType("int")
+                        .HasColumnName("StockLimit");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2")

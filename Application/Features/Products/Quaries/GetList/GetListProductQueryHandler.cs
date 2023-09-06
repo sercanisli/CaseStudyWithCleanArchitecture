@@ -4,6 +4,7 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Products.Quaries.GetList
 {
@@ -21,7 +22,7 @@ namespace Application.Features.Products.Quaries.GetList
         public async Task<GetListResponse<GetListProductListItemDto>> Handle(GetListProductQuery request, CancellationToken cancellationToken)
         {
             Paginate<Product> products= await _productRepository
-                .GetListAsync(index:request.PageRequest.PageIndex, size:request.PageRequest.PageSize,cancellationToken:cancellationToken);
+                .GetListAsync(include:c=>c.Include(c=>c.Category),index:request.PageRequest.PageIndex, size:request.PageRequest.PageSize,cancellationToken:cancellationToken);
             GetListResponse<GetListProductListItemDto> response = _mapper.Map<GetListResponse<GetListProductListItemDto>>(products);
             return response;
         }

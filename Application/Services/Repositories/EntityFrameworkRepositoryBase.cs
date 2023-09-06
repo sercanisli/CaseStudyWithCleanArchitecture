@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Collections;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -60,6 +61,7 @@ namespace Application.Services.Repositories
 
         public async Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false)
         {
+            //entity.DeletedDate = DateTime.Now;
             await SetEntityAsDeletedAsync(entity, permanent); //nesnenin silineceğine mi yoksa DeletedDate'in güncelleneceğine mi karar vereceğimiz method. (Soft Delete)
             await _context.SaveChangesAsync();
             return entity;
@@ -67,6 +69,10 @@ namespace Application.Services.Repositories
 
         public async Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entities, bool permanent = false)
         {
+            //foreach (TEntity entity in entities)
+            //{
+            //    entity.DeletedDate = DateTime.Now;
+            //}
             await SetEntityAsDeletedAsync(entities, permanent);
             await _context.SaveChangesAsync();
             return entities;

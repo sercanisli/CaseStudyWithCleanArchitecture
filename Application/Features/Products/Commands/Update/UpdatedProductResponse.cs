@@ -13,6 +13,6 @@ namespace Application.Features.Products.Commands.Update
         public string Description { get; set; }
         public int StockQuantity { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

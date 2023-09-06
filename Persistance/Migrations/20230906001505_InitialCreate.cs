@@ -16,7 +16,8 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StockLimit = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -53,7 +54,7 @@ namespace Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "UK_Categories_Name",
                 table: "Categories",
-                column: "Title",
+                column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(

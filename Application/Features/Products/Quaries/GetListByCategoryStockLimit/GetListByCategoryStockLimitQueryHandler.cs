@@ -27,7 +27,7 @@ namespace Application.Features.Products.Quaries.GetListByCategoryStockLimit
             var limit = category.StockLimit;
 
             Paginate<Product> products = await _productRepository.GetListAsync(
-                predicate: p => p.StockQuantity >=limit, include: c => c.Include(c => c.Category),
+                predicate: p => p.StockQuantity >=limit && p.CategoryId==request.CategoryId, include: c => c.Include(c => c.Category),
                 index: request.PageRequest.PageIndex, size: request.PageRequest.PageSize, cancellationToken: cancellationToken
                 );
 

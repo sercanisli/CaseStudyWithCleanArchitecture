@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Application.Services.Exceptions
 {
-    //her kod için ayrı ayrı bir try cath yazmakdansa burada method içerisinden geçirerek geçmesini sağladım.
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
@@ -24,7 +23,7 @@ namespace Application.Services.Exceptions
         {
             try
             {
-                await _next(context); //uygulamaya gelen isteği çalıştır.
+                await _next(context);
             }
             catch (Exception e)
             {
@@ -36,8 +35,7 @@ namespace Application.Services.Exceptions
         {
             response.ContentType="application/json";
             _httpExceptionHandler.Response = response;
-            return _httpExceptionHandler.HandlerExceptionAsync(exception); //HandlerExceptionAsync methoduma yolladım.
-            //Exception türünü rada belirleyip ona göre hareket edecek.
+            return _httpExceptionHandler.HandlerExceptionAsync(exception);
         }
     }
 }

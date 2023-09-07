@@ -103,7 +103,7 @@ namespace Application.Services.Repositories
             {
                 queryable = queryable.AsNoTracking();
             }
-            if (include != null) //join işlemi var mı
+            if (include != null)
             {
                 queryable = include(queryable);
             }
@@ -111,7 +111,7 @@ namespace Application.Services.Repositories
             {
                 queryable = queryable.IgnoreQueryFilters();
             }
-            if (predicate != null) //where sorgumuz var mı?
+            if (predicate != null)
             {
                 queryable = queryable.Where(predicate);
             }
@@ -144,7 +144,7 @@ namespace Application.Services.Repositories
             return await queryable.ToPaginateAsync(index, size, cancellationToken);
         }
 
-        public IQueryable<TEntity> Query() => _context.Set<TEntity>(); //ilgili domain nesnemize attach oluruz. Ekleriz.
+        public IQueryable<TEntity> Query() => _context.Set<TEntity>();
 
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {

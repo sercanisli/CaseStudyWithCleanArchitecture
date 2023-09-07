@@ -8,8 +8,8 @@ namespace Application.Services.Dynamic
 {
     public class Sort
     {
-        public string Field { get; set; } //hangi alanı sıralayacağım.
-        public string Direction { get; set; } //Asc mi Desc mi?
+        public string Field { get; set; }
+        public string Direction { get; set; }
 
         public Sort()
         {

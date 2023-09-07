@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Products.Rules
 {
-    //imzalamak için oluşturduğum temel sınıf.
     public class BaseBusinessRules
     {
     }

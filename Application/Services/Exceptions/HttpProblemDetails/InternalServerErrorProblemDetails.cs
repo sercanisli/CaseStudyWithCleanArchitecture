@@ -10,7 +10,6 @@ namespace Application.Services.Exceptions.HttpProblemDetails
 {
     public class InternalServerErrorProblemDetails : ProblemDetails
     {
-        //beklenmedik hatalarım için oluşturulan sınıf.
         public InternalServerErrorProblemDetails(string detail)
         {
             Title = "Internal Server Error";

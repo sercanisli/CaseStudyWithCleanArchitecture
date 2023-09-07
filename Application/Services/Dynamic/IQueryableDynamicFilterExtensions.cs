@@ -5,20 +5,17 @@ namespace Application.Services.Dynamic
 {
     public static class IQueryableDynamicFilterExtensions
     {
-        //System.Linq.Dynamic.Core kütüphanesi kullandım. Bu kütüphane ile sorgumu string yapısında yazıyorum
-        //Bu yapı bu sorguyu Linq sorgusuna çeviriyor. 
-        //Bu yapı tamamen bir standart üzerine kuruludur. İsimlendirmelerin hepsi standarttır.
         private static readonly string[] _orders = { "asc", "desc" };
         private static readonly string[] _logics = { "and", "or" };
 
         private static readonly IDictionary<string, string> _operators = new Dictionary<string, string>
         {
-            { "eq", "=" }, //equal
-            { "neq", "!=" }, //not equal
-            { "lt", "<" }, //less than
-            { "lte", "<=" }, //less than and equal
-            { "gt", ">" }, //greater than
-            { "gte", ">=" }, //greater than and equal
+            { "eq", "=" },
+            { "neq", "!=" },
+            { "lt", "<" },
+            { "lte", "<=" },
+            { "gt", ">" },
+            { "gte", ">=" },
             { "isnull", "== null" },
             { "isnotnull", "!= null" },
             { "startswith", "StartsWith" },
@@ -29,7 +26,6 @@ namespace Application.Services.Dynamic
 
         public static IQueryable<T> ToDynamic<T>(this IQueryable<T> query, DynamicQuery dynamicQuery)
         {
-            //Dynamic'e çeviren metodum burası. Burada gerekli fonksiyonlara gönderiyorum.
             if (dynamicQuery.Filter is not null)
                 query = Filter(query, dynamicQuery.Filter);
             if (dynamicQuery.Sort is not null && dynamicQuery.Sort.Any())

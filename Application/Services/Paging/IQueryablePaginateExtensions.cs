@@ -14,12 +14,10 @@ namespace Application.Services.Paging
             int index,
             int size,
             CancellationToken cancellationToken = default
-            //her sayfada ne kadar veri olacağına karar verilen alan.
             )
         {
             int count = await source.CountAsync(cancellationToken).ConfigureAwait(false);
             List<T> items = await source.Skip(index * size).Take(size).ToListAsync(cancellationToken).ConfigureAwait(false);
-            //bulunduğum sayfa ile sayfamda gelen veri miktarını çarparak sayfa atlama işlemini gerçekleştirdim. Ve ardından gelen eriyi aldım.
 
             Paginate<T> list = new()
             {
@@ -27,7 +25,7 @@ namespace Application.Services.Paging
                 Count = count,
                 Items = items,
                 Size = size,
-                Pages = (int)Math.Ceiling(count / (double)size), //toplam sayfa sayım.
+                Pages = (int)Math.Ceiling(count / (double)size),
             };
             return list;
         }

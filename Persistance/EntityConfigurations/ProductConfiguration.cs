@@ -21,7 +21,6 @@ namespace Persistence.EntityConfigurations
             builder.HasOne(p => p.Category);
 
             //Global Query Filter
-            //ilgili product için bir deleted değeri yoksa;
             builder.HasQueryFilter(p => !p.DeletedDate.HasValue);
         }
     }

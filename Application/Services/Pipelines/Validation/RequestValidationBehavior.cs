@@ -19,9 +19,9 @@ namespace Application.Services.Pipelines.Validation
             ValidationContext<object> context = new(request);
 
             IEnumerable<ValidationExceptionModel> errors = _validators
-                .Select(validator => validator.Validate(context)) //context'i validate et.
-                .SelectMany(result => result.Errors) //birden fazla validation hatası alınırsa eğer.
-                .Where(failure => failure != null) //bir fail var ise
+                .Select(validator => validator.Validate(context))
+                .SelectMany(result => result.Errors)
+                .Where(failure => failure != null)
                 .GroupBy(
                     keySelector: p=>p.PropertyName,
                     resultSelector: (propertyName,errors)=>

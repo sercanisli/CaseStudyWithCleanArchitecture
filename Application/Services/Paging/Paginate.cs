@@ -12,13 +12,13 @@ namespace Application.Services.Paging
         {
             Items = Array.Empty<T>();
         }
-        public int Size { get; set; } //sayfada kaç data gelecek.
-        public int Index { get; set; } //hangi sayfadayız.
-        public int Count { get; set; } //toplam veri sayısı.
-        public int Pages { get; set; } //toplam kaç sayfamız var.
+        public int Size { get; set; }
+        public int Index { get; set; }
+        public int Count { get; set; }
+        public int Pages { get; set; }
 
-        public IList<T> Items { get; set; } //datamız.
-        public bool HasPrevious => Index > 0; //önceki sayfa var mı?
-        public bool HasNext => Index+1 < Pages; //sonraki sayfa var mı?
+        public IList<T> Items { get; set; }
+        public bool HasPrevious => Index > 0;
+        public bool HasNext => Index+1 < Pages;
     }
 }

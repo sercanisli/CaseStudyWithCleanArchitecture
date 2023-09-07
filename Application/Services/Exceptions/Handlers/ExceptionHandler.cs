@@ -14,7 +14,7 @@ namespace Application.Services.Exceptions.Handlers
             {
                 BusinessException businessException => HandlerException(businessException),
                 ValidationException validationException => HandlerException(validationException),
-                _ => HandlerException(exception)     //hiç bir şey gelmediyse, genel ise.
+                _ => HandlerException(exception)
             };
 
         protected abstract Task HandlerException(BusinessException businessException);

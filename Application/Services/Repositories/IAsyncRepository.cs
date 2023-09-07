@@ -9,9 +9,9 @@ namespace Application.Services.Repositories
     public interface IAsyncRepository<TEntity,TEntityId>:IQuery<TEntity> where TEntity : Entity<TEntityId>
     {
         Task<TEntity?> GetAsync(
-            Expression<Func<TEntity, bool>> predicate, //where koşulu yazabilmek için. 
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include= null,  //Join desteği getirdim. Join yaparak da veri getirebiliriz. Tablo birleştirerek de. Join yapmak zorunda olmadığım için null geçtim.
-            bool withDeleted = false, //Veritabanında silindi olarak işaretli verileri ister isem getirebileceğim yapı.
+            Expression<Func<TEntity, bool>> predicate,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include= null,
+            bool withDeleted = false,
             bool enableTracking = true,
             CancellationToken cancellationToken = default
             );
@@ -53,7 +53,7 @@ namespace Application.Services.Repositories
 
         Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entities);
 
-        Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false); //permenant ile soft delete mi kalıcı mı silinecek kararı veriliyor.
+        Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false);
 
         Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entities, bool permanent = false);
     }

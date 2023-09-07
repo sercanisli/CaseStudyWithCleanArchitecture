@@ -15,8 +15,7 @@ namespace Persistence.Contexts
         public BaseDbContext(DbContextOptions options, IConfiguration configuration) : base(options) 
         {
             Configuration = configuration;
-            Database.EnsureCreated(); //veritabanı oluştu mu emin olmak için 
-        }
+            Database.EnsureCreated();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

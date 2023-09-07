@@ -18,7 +18,6 @@ namespace Application
 
             services.AddMediatR(configuration =>
             {
-                //Controller üzerinden Send edilen nesneye ait Command, Handler, Response ' u otomatik olarak bulması için.
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 
                 configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
@@ -26,16 +25,10 @@ namespace Application
             });
             return services;
         }
-        //bu işlem için bu extension methodunu Program.cs içerisinde geçtim.
-
-
-        //uygulama çalıştığında gidecek ve Business sınıflarını IoC'ye ekleyecek.
         public static IServiceCollection AddSubClassesOfType(this IServiceCollection services, Assembly assembly, Type type, 
             Func<IServiceCollection, Type, IServiceCollection>? addWithLifeCycle = null)
         {
             var types = assembly.GetTypes().Where(t=>t.IsSubclassOf(type) && type != t).ToList();
-            //assembly içerisinde subClass olarak verdiğim sınıfları al (BaseBusinessRules) onları LifeCycle'a ekle.
-            //Ioc kaydı yapmış oluyoruz.
             foreach (var item in types)
             {
                 if (addWithLifeCycle == null)

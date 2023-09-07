@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Application.Services.Paging
 {
-    //ihtiyaç durumuna göre ezilebilir o yüzden abstract
     public abstract class BasePageableModel
     {
         public int Size { get; set; }
